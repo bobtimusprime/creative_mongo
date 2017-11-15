@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <title>Piano Practice</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/app.js"></script>
+  <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+
+<body ng-app="student" ng-controller="mainCtrl" >
+  <form ng-submit="addStudent()">
+   <input type="text" ng-model="formContent"></input>
+   <button type="submit">Add Student</button>
+  </form>
+
+<div ng-repeat="student in students | orderBy: '-practiceTime'">
+  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>
+  {{student.name}} - Practice Time {{student.practiceTime}}
+</div>
+
+
+</body>
+</html>
