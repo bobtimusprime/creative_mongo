@@ -3,16 +3,55 @@ angular.module('student', [])
  '$scope','$http',
  function($scope, $http) {
    $scope.students = [];
+
+   $scope.create = function(student) {
+     return $http.post('/students', student).success(function (data){
+      $scope.students.push(data);
+     });
+   };
+
+   $scope.delete = function(student) {
+     $http.delete('/students/' + student._id)
+       .success(function(data){
+        console.log("Delete worked");
+     });
+     $scope.getAll();
+   };
+
    $scope.addStudent = function(){
      var newObject = {name:$scope.formContent, practiceTime :0};
      $scope.students.push(newObject);
      $scope.formContent = "";
    };
 
+   if($scope.formContent === '') {return;}
+   console.log("In addComment with" + $scope.formContent);
+   $scope.create({
+     name: $scope.formContent,
+     practicetime: 0
+   });
+   $scope.formContent = '';
+
    $scope.incrementPracticeTime = function(student) {
-     student.practiceTime += 1;
+     $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
      //Maybe we could have a button for each student that is like (+5) or (+10) mins 
    };
+
+   $scope.addPracticeTime = function(student) {
+     return $http.put('/students/' + student._id + '/addPracticeTime')
+       .success(function(data) {
+          console.log('addPracticeTime worked');
+         // student.practiceTime +=1;
+       });
+   };
+
+   $scope.getAll = function() {
+     return $http.get('/students').success(function(data){
+       angular.copy(data, $scope.students);
+     });
+   };
+
+   $scope.getAll();
  }
 ]);
