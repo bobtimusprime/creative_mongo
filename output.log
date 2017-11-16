@@ -1,0 +1,6 @@
+nohup: ignoring input
+[0mGET / [32m200 [0m6.479 ms - 798[0m
+[0mGET /javascripts/app.js [32m200 [0m2.058 ms - 567[0m
+[0mGET /images/favicon.ico [32m200 [0m1.414 ms - 318[0m
+[0mGET / [36m304 [0m0.996 ms - -[0m
+[0mGET /javascripts/app.js [36m304 [0m0.611 ms - -[0m

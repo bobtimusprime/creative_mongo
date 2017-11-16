@@ -8,17 +8,24 @@
   <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 
-<body ng-app="student" ng-controller="mainCtrl" >
+<body ng-app="student" ng-controller="mainCtrl" 
+	style="background:url(birds.jpg) no-repeat center center fixed; 
+   	-webkit-background-size: cover;
+   	-moz-background-size: cover;
+   	-o-background-size: cover;
+   	background-size: cover;">
+  <div style="padding: 20% 15px 750px 15px; height: auto;">
+     <h1 style ="color: white; text-shadow: 3px 3px 3px black; text-align: center;"><font size="20"><strong>Piano Classes</strong></font></h1><br>
+  <div class = "container card" style="background:white; box-shadow: 10px 10px 5px LightBlue; padding: 25px 25px 25px 65px; width: 30rem; height: auto;">
   <form ng-submit="addStudent()">
    <input type="text" ng-model="formContent"></input>
    <button type="submit">Add Student</button>
   </form>
-
+ </div>
 <div ng-repeat="student in students | orderBy: '-practiceTime'">
   <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>
   {{student.name}} - Practice Time {{student.practiceTime}}
 </div>
-
-
+</div>
 </body>
 </html>
