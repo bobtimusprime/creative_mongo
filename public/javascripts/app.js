@@ -31,6 +31,7 @@ angular.module('student', [])
 
    
    $scope.incrementPracticeTime = function(student) {
+     console.log("inside Increment practice time with " + student.name)
      $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
      //Maybe we could have a button for each student that is like (+5) or (+10) mins 
