@@ -1,4 +1,5 @@
 angular.module('student', [])
+ .directive('profile', profileDirective)
  .controller('mainCtrl', [
  '$scope','$http',
  function($scope, $http) {
@@ -19,13 +20,13 @@ angular.module('student', [])
    };
 
    $scope.addStudent = function(){
-     if($scope.formContent ==='') { return;}
-     console.log("In addStudent with " +$scope.formContent);
+     if($scope.studentNameForm ==='') { return;}
+     console.log("In addStudent with " +$scope.studentNameForm);
      $scope.create({ 
-       name: $scope.formContent,
+       name: $scope.studentNameForm,
        practiceTime: 0
      });
-     $scope.formContent ='';
+     $scope.studentNameForm ='';
    };
 
    
@@ -51,4 +52,30 @@ angular.module('student', [])
 
    $scope.getAll();
  }
-]);
+])//End of controller
+
+function profileDirective() {
+  return {
+    scope: {
+      student: '='
+    },
+    restrict: 'E',
+    replace: 'true',
+    template: (
+      '<div class="Profile">' +
+        '<h4>{{student.name}}</h4>' +
+        '<h4>Practice Time: {{student.practiceTime}}</h4>' +
+        '<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>' +
+        '<span class="glyphicon glyphicon-remove" ng-click="delete(student)"></span>' +
+      '</div>'
+    ),
+    link: link
+  };
+
+  function link (scope) {
+    //if (!scope.user.picUrl) {
+    //  scope.user.avatarUrl = 'https://www.drupal.org/files/issues/default-avatar.png';
+    //}
+  }
+  
+}
