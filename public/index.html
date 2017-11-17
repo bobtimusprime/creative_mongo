@@ -7,6 +7,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">  
   <link href="stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--Angular dependency-->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
@@ -33,7 +34,11 @@
 
   <div class='student-list'>
     <div ng-repeat="student in students | orderBy: '-practiceTime'">
-       <profile student = 'student' />
+      <div class="profile">
+        {{student.name}} <br/>
+        {{student.practiceTime}}<br/>
+        <span class="fa fa-chevron-up" ng-click="incrementPracticeTime(student)"></span>
+      </div>
     </div>
   </div>
 

@@ -1,8 +1,7 @@
 angular.module('student', [])
- .directive('profile', profileDirective)
  .controller('mainCtrl', [
- '$scope','$http',
- function($scope, $http) {
+ '$scope','$http','$compile',
+ function($scope, $http, $compile) {
    $scope.students = [];
 
    $scope.create = function(student) {
@@ -50,34 +49,45 @@ angular.module('student', [])
        angular.copy(data, $scope.students);
      });
    };
+   
+   /*
+   $scope.addButton = function(student){
+     var btnhtml = '<button type="submit" ng-click="buttonTest()">Add Practice time </button>';
+     var temp = $compile(btnhtml)($scope);
+     angular.element(document.getElementById(student._id)).append(temp);
+   }   
+   */ 
+
+   $scope.buttonTest = function(student) {
+     console.log("Button has clicked");
+   }
 
    $scope.getAll();
  }
 ])//End of controller
 
-function profileDirective() {
+.directive('profile', function($compile) {
   return {
     scope: {
-      student: '='
-    },
+     student: '=',
+    },   
     restrict: 'E',
     replace: 'true',
     template: (
-      '<div class="profile">' +
-        '<h4>{{student.name}}</h4>' +
-        '<h4>Practice Time: {{student.practiceTime}}</h4>' +
-        '<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>' +
-        '<span class="glyphicon glyphicon-remove" ng-click="delete(student)"></span>' +
-        '<button type="submit" ng-click="incrementPracticeTime(student)">Add Practice Time</button>' +
-      '</div>'
+        '<div id = "{{student._id}}"  class="profile info">' +
+          '<h4>{{student.name}}</h4>'+
+          '<h4>Practice Time: {{student.practiceTime}}</h4>' +
+        '</div>'      
     ),
-    link: link
-  };
-
-  function link (scope) {
-    //if (!scope.user.picUrl) {
-    //  scope.user.avatarUrl = 'https://www.drupal.org/files/issues/default-avatar.png';
-    //}
+    link : function(scope, element, attrs) {
+      var newEl = angular.element('<button type="submit" btn="buttonTest">Add Practice Time</button>');
+      var temp = $compile(newEl)(scope);
+   // console.log(scope);
+      console.log(element);
+   // console.log(attrs);
+      
+      element.append(temp);
+   // $compile(newEl)(scope);
+    }
   }
-  
-}
+})
