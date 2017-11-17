@@ -30,13 +30,14 @@ angular.module('student', [])
 
    $scope.decrementPracticeTime = function(student){
      $scope.minusPracticeTime(student);
-     $scope.reloadPage();
+     //$scope.reloadPage();
    };   
   
    $scope.minusPracticeTime = function(student) {
      return $http.put('students/' + student._id + '/nopractice')
        .success(function(data) {
          console.log('minusPracticeTime worked');
+         student.practiceTime -=5;
        });
    };
 
@@ -45,14 +46,14 @@ angular.module('student', [])
      $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
      //Maybe we could have a button for each student that is like (+5) or (+10) mins 
-     $scope.reloadPage();
+     //$scope.reloadPage();
    };
 
    $scope.addPracticeTime = function(student) {
      return $http.put('/students/' + student._id + '/practice')
        .success(function(data) {
           console.log('addPracticeTime worked');
-         // student.practiceTime +=1;
+          student.practiceTime +=5;
        });
    };
 
