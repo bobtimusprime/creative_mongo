@@ -62,11 +62,12 @@ function profileDirective() {
     restrict: 'E',
     replace: 'true',
     template: (
-      '<div class="Profile">' +
+      '<div class="profile">' +
         '<h4>{{student.name}}</h4>' +
         '<h4>Practice Time: {{student.practiceTime}}</h4>' +
         '<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>' +
         '<span class="glyphicon glyphicon-remove" ng-click="delete(student)"></span>' +
+        '<button type="submit" ng-click="incrementPracticeTime(student)">Add Practice Time</button>' +
       '</div>'
     ),
     link: link

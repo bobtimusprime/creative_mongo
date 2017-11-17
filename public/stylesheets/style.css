@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family:'Montserrat', sans-serif;
+  background: url(../images/birds.jpg), no-repeat, center, center, fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 20% 15px 750px 15px;
+  height: auto; 
 }
 
 a {
   color: #00B7FF;
+}
+
+h1 {
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  text-align: center;
+  font-size: 48px;
+}
+
+.student-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.container-card {
+  background:white;
+  box-shadow: 10px 10px 5px LightBlue;
+  padding: 25px 25px 25px 65px;
+  width: 30rem;
+  height: auto;
+  margin: auto;
+}
+
+.profile {
+  width: 300px;
+  max-width: 100%;
+  margin: 5px;
+  border: 5px solid black;
 }
