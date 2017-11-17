@@ -14,18 +14,31 @@
    	-moz-background-size: cover;
    	-o-background-size: cover;
    	background-size: cover;">
-  <div style="padding: 20% 15px 750px 15px; height: auto;">
+<center>
+  <div style="padding: 10% 15px 750px 15px; height: auto;">
      <h1 style ="color: white; text-shadow: 3px 3px 3px black; text-align: center;"><font size="20"><strong>Piano Classes</strong></font></h1><br>
-  <div class = "container card" style="background:white; box-shadow: 10px 10px 5px LightBlue; padding: 25px 25px 25px 65px; width: 30rem; height: auto;">
-  <form ng-submit="addStudent()">
-   <input type="text" ng-model="formContent"></input>
-   <button type="submit">Add Student</button>
-  </form>
- </div>
+  <!--<div class = "container card" style="background:white; box-shadow: 10px 10px 5px LightBlue; padding: 25px 25px 25px 65px; width: 30rem; height: auto;">-->
+   <div class="card bg-info text-white card-margin" style="background:white; padding: 25px 25px 25px 65px; width: 50rem; height: auto;">
+    <div class="card-header">Student Information</div>
+     <div class="card-body">
+   <form ng-submit="addStudent()">
+    <input type="text" ng-model="formContent"></input>
+    <button type="submit">Add Student</button>
+   </form>
+<div id="chatbox" style="background: #00B7FF; color:white">
 <div ng-repeat="student in students | orderBy: '-practiceTime'">
-  <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>
-  {{student.name}} - Practice Time {{student.practiceTime}}
+<p>
+ <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>
+ {{student.name}} - Practice Time {{student.practiceTime}}
+</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</center>
+<div id="json"></div>
+<div id="done"></div>
 </body>
 </html>

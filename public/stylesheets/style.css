@@ -6,3 +6,26 @@ body {
 a {
   color: #00B7FF;
 }
+
+#chatbox {
+    text-align:left;
+    color: white;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#34495e;
+    height:450px;
+    width:800px;
+    border:1px solid #ACD8F0;
+    overflow:auto;
+}
+
+.list-group {
+    margin-bottom: 1%;
+}
+
+.list-group-item {
+    font-weight: bolder;
+    background-color: darkorchid;
+    margin-bottom: 1%;
+}
