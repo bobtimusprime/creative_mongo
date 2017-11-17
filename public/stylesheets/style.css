@@ -15,8 +15,7 @@ a {
 
 
 #chatbox {
-    text-align:left;
-    color: white;
+   text-align:left;
     margin:0 auto;
     margin-bottom:25px;
     padding:30px;
@@ -30,6 +29,7 @@ a {
 
 .card-header {
   padding: 25px, 25px, 25px, 65px;
+  color: white;
   width: 50rem;
   height: auto;
   margin: auto;
