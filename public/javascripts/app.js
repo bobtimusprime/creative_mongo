@@ -19,19 +19,16 @@ angular.module('student', [])
    };
 
    $scope.addStudent = function(){
-     var newObject = {name:$scope.formContent, practiceTime :0};
-     $scope.students.push(newObject);
-     $scope.formContent = "";
+     if($scope.formContent ==='') { return;}
+     console.log("In addStudent with " +$scope.formContent);
+     $scope.create({ 
+       name: $scope.formContent,
+       practiceTime: 0
+     });
+     $scope.formContent ='';
    };
 
-   if($scope.formContent === '') {return;}
-   console.log("In addComment with" + $scope.formContent);
-   $scope.create({
-     name: $scope.formContent,
-     practicetime: 0
-   });
-   $scope.formContent = '';
-
+   
    $scope.incrementPracticeTime = function(student) {
      $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
@@ -39,7 +36,7 @@ angular.module('student', [])
    };
 
    $scope.addPracticeTime = function(student) {
-     return $http.put('/students/' + student._id + '/addPracticeTime')
+     return $http.put('/students/' + student._id + '/practice')
        .success(function(data) {
           console.log('addPracticeTime worked');
          // student.practiceTime +=1;

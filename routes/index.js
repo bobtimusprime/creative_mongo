@@ -5,10 +5,10 @@ var Student  = mongoose.model('Student');
 
 router.param('student', function(req, res, next, id) {
   var query = Student.findById(id);
-  query.exec(function(err, comment) {
+  query.exec(function(err, student) {
     if (err) { return next(err) }
-    if (!comment) { return next( new Error("Can't find comment"));}
-    req.comment = comment;
+    if (!student) { return next( new Error("Can't find student"));}
+    req.student = student;
     return next();
   });
 });
@@ -35,8 +35,9 @@ router.get('/students/:student', function(req, res) {
 
 //req.student is the object found in the param route
 //addPracticeTime is the method declared with the schema
-router.put('/students/:student/practiceTime', function(req, res, next) {
-  req.student.addPracticeTime(function(err, student){
+router.put('/students/:student/practice', function(req, res, next) {
+   console.log("In the practice route with " + req.student.name );
+   req.student.addPracticeTime(function(err, student){
     if (err) { return next(err);}
     res.json(student);
   });
