@@ -2,12 +2,25 @@
 
 <head>
   <title>Piano Practice</title>
+
+  <!--Stylesheets-->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">  
+  <link href="stylesheets/style.css" rel="stylesheet">
+  
+  <!--Angular dependency-->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+ 
+  <!--Local dependencies-->
   <script src="javascripts/app.js"></script>
-  <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!--Favicon-->
+  <!--Should be taken care of with the app.use in the router (app.js)-->
+  <!--link href="/images/favicon.ico" rel="icon" type="image/x-icon" /-->
+
 </head>
 
+<<<<<<< HEAD
 <body ng-app="student" ng-controller="mainCtrl" 
 	style="background:url(birds.jpg) no-repeat center center fixed; 
    	-webkit-background-size: cover;
@@ -40,5 +53,25 @@
 </center>
 <div id="json"></div>
 <div id="done"></div>
+=======
+<body ng-app="student" ng-controller="mainCtrl">
+
+  <h1><strong>Piano Classes</strong></h1><br>
+
+  <div class = "container-card">
+   <form class="simple-form">
+     <input type="text" ng-model="studentNameForm"></input>
+     <button type="submit" ng-click="addStudent()">Add Student</button>
+   </form>
+  </div>
+
+  <div class='student-list'>
+    <div ng-repeat="student in students | orderBy: '-practiceTime'">
+       <profile student = 'student' />
+    </div>
+  </div>
+
+
+>>>>>>> origin
 </body>
 </html>

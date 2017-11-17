@@ -1,4 +1,5 @@
 angular.module('student', [])
+ .directive('profile', profileDirective)
  .controller('mainCtrl', [
  '$scope','$http',
  function($scope, $http) {
@@ -19,27 +20,25 @@ angular.module('student', [])
    };
 
    $scope.addStudent = function(){
-     var newObject = {name:$scope.formContent, practiceTime :0};
-     $scope.students.push(newObject);
-     $scope.formContent = "";
+     if($scope.studentNameForm ==='') { return;}
+     console.log("In addStudent with " +$scope.studentNameForm);
+     $scope.create({ 
+       name: $scope.studentNameForm,
+       practiceTime: 0
+     });
+     $scope.studentNameForm ='';
    };
 
-   if($scope.formContent === '') {return;}
-   console.log("In addComment with" + $scope.formContent);
-   $scope.create({
-     name: $scope.formContent,
-     practicetime: 0
-   });
-   $scope.formContent = '';
-
+   
    $scope.incrementPracticeTime = function(student) {
+     console.log("inside Increment practice time with " + student.name)
      $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
      //Maybe we could have a button for each student that is like (+5) or (+10) mins 
    };
 
    $scope.addPracticeTime = function(student) {
-     return $http.put('/students/' + student._id + '/addPracticeTime')
+     return $http.put('/students/' + student._id + '/practice')
        .success(function(data) {
           console.log('addPracticeTime worked');
          // student.practiceTime +=1;
@@ -54,4 +53,31 @@ angular.module('student', [])
 
    $scope.getAll();
  }
-]);
+])//End of controller
+
+function profileDirective() {
+  return {
+    scope: {
+      student: '='
+    },
+    restrict: 'E',
+    replace: 'true',
+    template: (
+      '<div class="profile">' +
+        '<h4>{{student.name}}</h4>' +
+        '<h4>Practice Time: {{student.practiceTime}}</h4>' +
+        '<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>' +
+        '<span class="glyphicon glyphicon-remove" ng-click="delete(student)"></span>' +
+        '<button type="submit" ng-click="incrementPracticeTime(student)">Add Practice Time</button>' +
+      '</div>'
+    ),
+    link: link
+  };
+
+  function link (scope) {
+    //if (!scope.user.picUrl) {
+    //  scope.user.avatarUrl = 'https://www.drupal.org/files/issues/default-avatar.png';
+    //}
+  }
+  
+}
