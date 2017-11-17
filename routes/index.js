@@ -43,6 +43,14 @@ router.put('/students/:student/practice', function(req, res, next) {
   });
 });
 
+router.put('/students/:student/nopractice', function(req, res, next) {
+  console.log("in the nopractice route with " + req.student.name);
+  req.student.minusPracticeTime(function(err, student){
+    if (err) {return next(err);}
+    res.json(student);
+  });
+});
+
 router.delete('/students/:student', function(req, res) {
   console.log("in Delete");
   req.student.remove();

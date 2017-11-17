@@ -1,7 +1,7 @@
 angular.module('student', [])
  .controller('mainCtrl', [
- '$scope','$http','$compile',
- function($scope, $http, $compile) {
+ '$scope','$http','$compile','$window',
+ function($scope, $http, $compile, $window) {
    $scope.students = [];
 
    $scope.create = function(student) {
@@ -28,12 +28,24 @@ angular.module('student', [])
      $scope.studentNameForm ='';
    };
 
-   
+   $scope.decrementPracticeTime = function(student){
+     $scope.minusPracticeTime(student);
+     $scope.reloadPage();
+   };   
+  
+   $scope.minusPracticeTime = function(student) {
+     return $http.put('students/' + student._id + '/nopractice')
+       .success(function(data) {
+         console.log('minusPracticeTime worked');
+       });
+   };
+
    $scope.incrementPracticeTime = function(student) {
      console.log("inside Increment practice time with " + student.name)
      $scope.addPracticeTime(student);
      //student.addPracticeTime(formContent) //Need to get the time from a form
      //Maybe we could have a button for each student that is like (+5) or (+10) mins 
+     $scope.reloadPage();
    };
 
    $scope.addPracticeTime = function(student) {
@@ -63,6 +75,8 @@ angular.module('student', [])
    }
 
    $scope.getAll();
+   
+   $scope.reloadPage = function(){ $window.location.reload();}
  }
 ])//End of controller
 

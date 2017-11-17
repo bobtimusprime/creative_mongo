@@ -13,18 +13,28 @@ a {
   color: #00B7FF;
 }
 
-<<<<<<< HEAD
+
 #chatbox {
     text-align:left;
     color: white;
     margin:0 auto;
     margin-bottom:25px;
-    padding:10px;
+    padding:30px;
     background:#34495e;
-    height:450px;
+    height:auto;
     width:800px;
     border:1px solid #ACD8F0;
     overflow:auto;
+    max-width: 100%;
+}
+
+.card-header {
+  padding: 25px, 25px, 25px, 65px;
+  width: 50rem;
+  height: auto;
+  margin: auto;
+  text-align: center;
+  font-size:26px;
 }
 
 .list-group {
@@ -35,7 +45,8 @@ a {
     font-weight: bolder;
     background-color: darkorchid;
     margin-bottom: 1%;
-=======
+}
+
 h1 {
   color: white;
   text-shadow: 3px 3px 3px black;
@@ -47,6 +58,11 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+}
+
+.student-list .fa{
+  font-size: 60px;
+  align-content: center;
 }
 
 .container-card {
@@ -61,7 +77,31 @@ h1 {
 .profile {
   width: 300px;
   max-width: 100%;
-  margin: 5px;
+  margin:5px;
   border: 5px solid black;
->>>>>>> origin
+  opacity:0.9;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 3px;
 }
+
+.icons {
+  text-align: right;
+}
+
+.simple-form {
+  width:60%;
+  margin: auto;
+  text-align: center;
+}
+
+.simple-form input{
+  width:100%;
+  margin:5px;
+}
+
+.simple-form button{
+  width: 75%;
+  margin:auto;
+}
+

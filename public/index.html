@@ -4,10 +4,10 @@
   <title>Piano Practice</title>
 
   <!--Stylesheets-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">  
   <link href="stylesheets/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!--Angular dependency-->
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
@@ -21,47 +21,14 @@
 
 </head>
 
-<<<<<<< HEAD
-<body ng-app="student" ng-controller="mainCtrl" 
-	style="background:url(birds.jpg) no-repeat center center fixed; 
-   	-webkit-background-size: cover;
-   	-moz-background-size: cover;
-   	-o-background-size: cover;
-   	background-size: cover;">
-<center>
-  <div style="padding: 10% 15px 750px 15px; height: auto;">
-     <h1 style ="color: white; text-shadow: 3px 3px 3px black; text-align: center;"><font size="20"><strong>Piano Classes</strong></font></h1><br>
-  <!--<div class = "container card" style="background:white; box-shadow: 10px 10px 5px LightBlue; padding: 25px 25px 25px 65px; width: 30rem; height: auto;">-->
-   <div class="card bg-info text-white card-margin" style="background:white; padding: 25px 25px 25px 65px; width: 50rem; height: auto;">
-    <div class="card-header">Student Information</div>
-     <div class="card-body">
-   <form ng-submit="addStudent()">
-    <input type="text" ng-model="formContent"></input>
-    <button type="submit">Add Student</button>
-   </form>
-<div id="chatbox" style="background: #00B7FF; color:white">
-<div ng-repeat="student in students | orderBy: '-practiceTime'">
-<p>
- <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementPracticeTime(student)"></span>
- {{student.name}} - Practice Time {{student.practiceTime}}
-</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</center>
-<div id="json"></div>
-<div id="done"></div>
-=======
 <body ng-app="student" ng-controller="mainCtrl">
 
   <h1><strong>Piano Classes</strong></h1><br>
 
-  <div class = "container-card">
+  <div id="chatbox">
+   <div class="card-header">Student Information</div>
    <form class="simple-form">
-     <input type="text" ng-model="studentNameForm"></input>
+     <input type="text" ng-model="studentNameForm" placeholder= "Name"></input><br/>
      <button type="submit" ng-click="addStudent()">Add Student</button>
    </form>
   </div>
@@ -69,14 +36,17 @@
   <div class='student-list'>
     <div ng-repeat="student in students | orderBy: '-practiceTime'">
       <div class="profile">
-        {{student.name}} <br/>
-        {{student.practiceTime}}<br/>
-        <span class="fa fa-chevron-up" ng-click="incrementPracticeTime(student)"></span>
-      </div>
+       {{student.name}}<br/>
+       Practice Time:  {{student.practiceTime}}<br/>
+       <div class="icons">
+       <span class="fa fa-chevron-up" ng-click="incrementPracticeTime(student)"></span>
+       <span class="fa fa-chevron-down" ng-click="decrementPracticeTime(student)"></span>
+       <span class="glyphicon glyphicon-remove" ng-click="delete(student)"></span>
+      </div> 
+     </div>
     </div>
   </div>
 
 
->>>>>>> origin
 </body>
 </html>
